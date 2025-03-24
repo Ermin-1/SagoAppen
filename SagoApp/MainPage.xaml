@@ -61,7 +61,7 @@
 
                 <Editor x:Name="StoryEditor" 
                 IsReadOnly="True" 
-                HeightRequest="300"
+                HeightRequest="380"
                 BackgroundColor="#80303030" 
                 TextColor="White"
                 FontFamily="Comic Sans Ms"
