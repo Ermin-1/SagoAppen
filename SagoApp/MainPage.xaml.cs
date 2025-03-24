@@ -1,16 +1,33 @@
 ﻿using System;
-using System.Net.Http;
-using System.Text;
-using Newtonsoft.Json;
+using System.IO;
 using System.Threading.Tasks;
+using Microsoft.Maui.Controls;
+using System.Collections.Generic; // Lägg till för IAsyncEnumerable
+using OpenAI;
+using OpenAI.Chat;
 
 namespace SagoApp
 {
     public partial class MainPage : ContentPage
     {
+        private OpenAIClient _chatGptClient;
+
         public MainPage()
         {
             InitializeComponent(); // Kopplar ihop XAML och code-behind
+            this.Loaded += MainPage_Loaded;
+        }
+
+        private void MainPage_Loaded(object sender, EventArgs e)
+        {
+            // Hämta API-nyckeln från miljövariabeln
+            var openAiKey = Environment.GetEnvironmentVariable("OPENAI_API_KEY");
+            if (string.IsNullOrWhiteSpace(openAiKey))
+            {
+                DisplayAlert("Fel", "API-nyckeln saknas. Var god sätt miljövariabeln OPENAI_API_KEY.", "OK");
+                return;
+            }
+            _chatGptClient = new OpenAIClient(openAiKey);
         }
 
         private async void OnGenerateStoryClicked(object sender, EventArgs e)
@@ -36,34 +53,22 @@ namespace SagoApp
         {
             try
             {
-                using (var client = new HttpClient())
+                // Använd en modell som är tillgänglig för ditt konto, t.ex. "gpt-3.5-turbo-16k"
+                var chatClient = _chatGptClient.GetChatClient("gpt-3.5-turbo-16k");
+
+                // Ändrad rad: Använd IAsyncEnumerable istället för AsyncResultCollection<>
+                IAsyncEnumerable<StreamingChatCompletionUpdate> updates = chatClient.CompleteChatStreamingAsync(prompt);
+                StringWriter responseWriter = new StringWriter();
+
+                await foreach (StreamingChatCompletionUpdate update in updates)
                 {
-                    // Ersätt "YOUR_OPENAI_API_KEY" med din riktiga API-nyckel
-                    client.DefaultRequestHeaders.Authorization =
-                        new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "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");
-
-                    var requestData = new
+                    foreach (ChatMessageContentPart updatePart in update.ContentUpdate)
                     {
-                        model = "text-davinci-003",
-                        prompt = prompt,
-                        max_tokens = 500
-                    };
-
-                    var json = JsonConvert.SerializeObject(requestData);
-                    var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                    var response = await client.PostAsync("https://api.openai.com/v1/completions", content);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var jsonResponse = await response.Content.ReadAsStringAsync();
-                        dynamic result = JsonConvert.DeserializeObject(jsonResponse);
-                        return result.choices[0].text.ToString();
-                    }
-                    else
-                    {
-                        return "Kunde inte generera sagan. Försök igen senare.";
+                        responseWriter.Write(updatePart.Text);
                     }
                 }
+
+                return responseWriter.ToString();
             }
             catch (Exception ex)
             {
