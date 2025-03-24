@@ -2,19 +2,53 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SagoApp.MainPage"
-             >
-    <ScrollView>
-        <StackLayout Padding="20" Spacing="15">
-            <Label Text="Ange vad sagan ska handla om:" FontAttributes="Bold" />
-            <Editor x:Name="PromptEditor" Placeholder="Skriv din prompt här..." HeightRequest="100" />
+             BackgroundColor="Transparent">
+    <Grid>
+        <!-- Bakgrundsbilden. Se till att bilden ligger i Resources\Images och har Build Action: MauiImage -->
+        <Image Source="uggla.png"
+           Aspect="AspectFill"
+           Opacity="0.7" />
 
-            <Label Text="Ange barnens namn (komma-separerade):" FontAttributes="Bold" />
-            <Entry x:Name="NamesEntry" Placeholder="Ex. Alice, Bob" />
+        <!-- UI-elementen över bilden -->
+        <ScrollView>
+            <StackLayout Padding="30" Spacing="15">
+                <Label Text="Vad sagan ska handla om?" 
+               FontAttributes="Bold"
+               TextColor="Orange"
+               FontFamily="Comic Sans MS"/>
 
-            <Button Text="Skapa saga" Clicked="OnGenerateStoryClicked" />
+                <Editor x:Name="PromptEditor" 
+                Placeholder="Skriv din prompt här..." 
+                HeightRequest="100"
+                BackgroundColor="Transparent"
+                TextColor="White" />
 
-            <Label Text="Genererad saga:" FontAttributes="Bold" />
-            <Editor x:Name="StoryEditor" IsReadOnly="True" HeightRequest="300" />
-        </StackLayout>
-    </ScrollView>
+                <Label Text="Ange barnens namn (ex: Selma, Emin):" 
+               FontAttributes="Bold"
+                TextColor="Orange"
+                 FontFamily="Comic Sans Ms" />
+
+                <Entry x:Name="NamesEntry" 
+               Placeholder="Ex. Alice, Bob"
+               BackgroundColor="Transparent"
+               TextColor="White" />
+
+                <Button Text="Skapa saga" 
+                Clicked="OnGenerateStoryClicked"
+                BackgroundColor="#007ACC"
+                TextColor="White" />
+
+                <Label Text="Er magiska saga:" 
+               FontAttributes="Bold"
+               TextColor="Orange"
+                FontFamily="Comic Sans Ms"/>
+
+                <Editor x:Name="StoryEditor" 
+                IsReadOnly="True" 
+                HeightRequest="300"
+                BackgroundColor="Transparent"
+                TextColor="White" />
+            </StackLayout>
+        </ScrollView>
+    </Grid>
 </ContentPage>
