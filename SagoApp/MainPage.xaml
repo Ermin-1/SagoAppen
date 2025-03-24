@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SagoApp.MainPage"
+             >
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="15">
+            <Label Text="Ange vad sagan ska handla om:" FontAttributes="Bold" />
+            <Editor x:Name="PromptEditor" Placeholder="Skriv din prompt här..." HeightRequest="100" />
+
+            <Label Text="Ange barnens namn (komma-separerade):" FontAttributes="Bold" />
+            <Entry x:Name="NamesEntry" Placeholder="Ex. Alice, Bob" />
+
+            <Button Text="Skapa saga" Clicked="OnGenerateStoryClicked" />
+
+            <Label Text="Genererad saga:" FontAttributes="Bold" />
+            <Editor x:Name="StoryEditor" IsReadOnly="True" HeightRequest="300" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
