@@ -12,42 +12,61 @@
         <!-- UI-elementen över bilden -->
         <ScrollView>
             <StackLayout Padding="30" Spacing="15">
-                <Label Text="Vad sagan ska handla om?" 
+
+                <Label Text="Vad ska sagan handla om?" 
                FontAttributes="Bold"
                TextColor="Orange"
-               FontFamily="Comic Sans MS"/>
+               FontFamily="Comic Sans MS"
+               FontSize="18"/>
 
                 <Editor x:Name="PromptEditor" 
-                Placeholder="Skriv din prompt här..." 
+                Placeholder="Skriv här..." 
                 HeightRequest="100"
-                BackgroundColor="Transparent"
-                TextColor="White" />
+                BackgroundColor="#55303030"
+                TextColor="White"
+                FontFamily="Comic Sans Ms"
+                FontSize="15"/>
+                
+                
 
-                <Label Text="Ange barnens namn (ex: Selma, Emin):" 
+                <Label Text="Ange barnet eller barnens namn (separerat med ett kommatecken):" 
                FontAttributes="Bold"
                 TextColor="Orange"
-                 FontFamily="Comic Sans Ms" />
+                 FontFamily="Comic Sans Ms"
+                       FontSize="18"/>
 
                 <Entry x:Name="NamesEntry" 
-               Placeholder="Ex. Alice, Bob"
-               BackgroundColor="Transparent"
-               TextColor="White" />
+                   Placeholder="Ex. Selma, Emin"
+                   BackgroundColor="#55303030"
+                   TextColor="White"
+                       FontFamily="Comic Sans Ms"
+                       FontSize="15"/>
 
-                <Button Text="Skapa saga" 
+
+
+
+
+                <Button Text="SKAPA SAGA" 
                 Clicked="OnGenerateStoryClicked"
-                BackgroundColor="#007ACC"
-                TextColor="White" />
+                BackgroundColor="DarkOrange"
+                FontAttributes="Bold"
+                TextColor="Purple" 
+                FontFamily="Comic Sans Ms" />
 
                 <Label Text="Er magiska saga:" 
                FontAttributes="Bold"
                TextColor="Orange"
-                FontFamily="Comic Sans Ms"/>
+                FontFamily="Comic Sans Ms"
+                       FontSize="18"/>
 
                 <Editor x:Name="StoryEditor" 
                 IsReadOnly="True" 
                 HeightRequest="300"
-                BackgroundColor="Transparent"
-                TextColor="White" />
+                BackgroundColor="#80303030" 
+                TextColor="White"
+                FontFamily="Comic Sans Ms"
+                 FontSize="18"/> 
+
             </StackLayout>
         </ScrollView>
     </Grid>
