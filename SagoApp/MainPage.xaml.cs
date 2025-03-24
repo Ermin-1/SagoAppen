@@ -40,7 +40,7 @@ namespace SagoApp
                 {
                     // Ersätt "YOUR_OPENAI_API_KEY" med din riktiga API-nyckel
                     client.DefaultRequestHeaders.Authorization =
-                        new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "YOUR_OPENAI_API_KEY");
+                        new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "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");
 
                     var requestData = new
                     {
