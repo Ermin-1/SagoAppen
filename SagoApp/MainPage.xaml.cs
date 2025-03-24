@@ -54,7 +54,7 @@ namespace SagoApp
             try
             {
                 // Använd en modell som är tillgänglig för ditt konto, t.ex. "gpt-3.5-turbo-16k"
-                var chatClient = _chatGptClient.GetChatClient("gpt-3.5-turbo-16k");
+                var chatClient = _chatGptClient.GetChatClient("gpt-4o-mini");
 
                 // Ändrad rad: Använd IAsyncEnumerable istället för AsyncResultCollection<>
                 IAsyncEnumerable<StreamingChatCompletionUpdate> updates = chatClient.CompleteChatStreamingAsync(prompt);
