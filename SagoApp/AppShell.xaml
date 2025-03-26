@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:SagoApp"
     Shell.FlyoutBehavior="Flyout"
-    Title="SagoApp">
+    Title="Sagostund">
     
 
     <!-- Anpassat flyout-huvud -->
@@ -36,4 +36,6 @@
        
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
+    
+    
 </Shell>
