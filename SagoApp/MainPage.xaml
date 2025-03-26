@@ -23,7 +23,7 @@
                         TextColor="White"
                         FontFamily="Comic Sans Ms"
                         FontSize="15"/>
-                <Label Text="Ange barnet eller barnens namn (separerat med ett kommatecken):" 
+                <Label Text="Ange barnet eller barnens namn:" 
                        FontAttributes="Bold"
                        TextColor="Orange"
                        FontFamily="Comic Sans Ms"
@@ -56,3 +56,4 @@
         </ScrollView>
     </Grid>
 </ContentPage>
+

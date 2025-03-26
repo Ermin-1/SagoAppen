@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <Shell
     x:Class="SagoApp.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -6,10 +5,35 @@
     xmlns:local="clr-namespace:SagoApp"
     Shell.FlyoutBehavior="Flyout"
     Title="SagoApp">
+    
+
+    <!-- Anpassat flyout-huvud -->
+    <Shell.FlyoutHeader>
+        <Grid Padding="20">
+            <!-- Bakgrundsbilden med fast höjd -->
+            <Image Source="sagostunden.png"
+               Aspect="AspectFill"
+               Opacity="0.8"
+               HorizontalOptions="Fill"
+               VerticalOptions="Start"
+               HeightRequest="120" />
+            <!-- Överlagrade UI-element -->
+            <Label Text="" 
+               FontSize="24" 
+               TextColor="DarkOrange"
+               FontAttributes="Bold"
+               FontFamily="Comic Sans Ms"
+               VerticalOptions="Center"
+               HorizontalOptions="Center" />
+        </Grid>
+    </Shell.FlyoutHeader>
+
+
+
 
     <ShellContent
-        Title="Home"
+        Title="Skapa en saga"
+       
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
-
 </Shell>

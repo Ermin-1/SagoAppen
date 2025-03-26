@@ -40,7 +40,7 @@ namespace SagoApp
             string fullPrompt = $"Skriv en saga för barn. Sagan ska handla om: {prompt}. Inkludera följande namn: {names}.";
 
             // Visa en enkel indikation
-            StoryEditor.Text = "Genererar saga...";
+            StoryEditor.Text = "Skapar er saga...";
 
             // Anropa API:t för att generera sagan
             string generatedStory = await GenerateStoryAsync(fullPrompt);
@@ -56,7 +56,7 @@ namespace SagoApp
                 // Använd en modell som är tillgänglig för ditt konto, t.ex. "gpt-3.5-turbo-16k"
                 var chatClient = _chatGptClient.GetChatClient("gpt-4o-mini");
 
-                // Ändrad rad: Använd IAsyncEnumerable istället för AsyncResultCollection<>
+          
                 IAsyncEnumerable<StreamingChatCompletionUpdate> updates = chatClient.CompleteChatStreamingAsync(prompt);
                 StringWriter responseWriter = new StringWriter();
 
