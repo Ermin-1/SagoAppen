@@ -7,9 +7,45 @@
         <Image Source="uggla.png"
                Aspect="AspectFill"
                Opacity="0.7" />
-
         <ScrollView>
             <StackLayout Padding="30" Spacing="15">
+                <!-- Fördefinierade prompt-knappar -->
+                <Label Text="Välj en färdig sagomall:" 
+                       FontAttributes="Bold"
+                       TextColor="Orange"
+                       FontFamily="Comic Sans MS"
+                       FontSize="18"/>
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Button Text="Äventyr" 
+                            FontAttributes="Bold,Italic"
+                            FontFamily="Comic Sans MS"
+                            Clicked="OnPresetPromptClicked"
+                            CommandParameter="Skriv en spännande äventyrsresa där hjälten hittar dolda skatter." />
+                    <Button Text="Mysterium" 
+                            FontAttributes="Bold,Italic"
+                            FontFamily="Comic Sans MS"
+                            Clicked="OnPresetPromptClicked"
+                            CommandParameter="Skriv en mystisk berättelse om försvunna städer och hemliga gåtor." />
+                    <Button Text="Magisk saga"
+                            FontAttributes="Bold,Italic"
+                            FontFamily="Comic Sans MS"
+                            Clicked="OnPresetPromptClicked"
+                            CommandParameter="Skriv en magisk saga om trollkarlar, drakar och förtrollade skogar." />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Button Text="Historisk saga" 
+                            FontAttributes="Bold,Italic"
+                            FontFamily="Comic Sans MS"
+                            Clicked="OnPresetPromptClicked"
+                            CommandParameter="Skriv en fängslande historisk berättelse om forna tider och hjältedåd." />
+                    <Button Text="Rymdäventyr" 
+                            FontAttributes="Bold,Italic"
+                            FontFamily="Comic Sans MS"
+                            Clicked="OnPresetPromptClicked"
+                            CommandParameter="Skriv en spännande rymdäventyrshistoria om intergalaktiska upptäckter och möten med främmande livsformer." />
+                </StackLayout>
+
                 <Label Text="Vad ska sagan handla om?" 
                        FontAttributes="Bold"
                        TextColor="Orange"
@@ -56,68 +92,3 @@
         </ScrollView>
     </Grid>
 </ContentPage>
-
-
-
-<!--<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SagoApp.MainPage"
-             BackgroundColor="Transparent">
-    <Grid>
-
-        <Image Source="uggla.png"
-           Aspect="AspectFill"
-           Opacity="0.7" />
-
-        <ScrollView>
-            <StackLayout Padding="30" Spacing="15">
-                <Label Text="Vad ska sagan handla om?" 
-                       FontAttributes="Bold"
-                       TextColor="Orange"
-                       FontFamily="Comic Sans MS"
-                       FontSize="18"/>
-                <Editor x:Name="PromptEditor" 
-                        Placeholder="Skriv här..." 
-                        HeightRequest="100"
-                        BackgroundColor="#55303030"
-                        TextColor="White"
-                        FontFamily="Comic Sans Ms"
-                        FontSize="15"/>
-                <Label Text="Ange barnet eller barnens namn:" 
-                       FontAttributes="Bold"
-                       TextColor="Orange"
-                       FontFamily="Comic Sans Ms"
-                       FontSize="18"/>
-                <Entry x:Name="NamesEntry" 
-                       Placeholder="Ex. Selma, Emin"
-                       BackgroundColor="#55303030"
-                       TextColor="White"
-                       FontFamily="Comic Sans Ms"
-                       FontSize="15"/>
-                <Button Text="SKAPA SAGA" 
-                        Clicked="OnGenerateStoryClicked"
-                        BackgroundColor="DarkOrange"
-                        FontAttributes="Bold"
-                        TextColor="Purple" 
-                        FontFamily="Comic Sans Ms" />
-                <Label Text="Er magiska saga:" 
-                       FontAttributes="Bold"
-                       TextColor="Orange"
-                       FontFamily="Comic Sans Ms"
-                       FontSize="18"/>
-                <Editor x:Name="StoryEditor" 
-                        IsReadOnly="True" 
-                        HeightRequest="380"
-                        BackgroundColor="#80303030" 
-                        TextColor="White"
-                        FontFamily="Comic Sans Ms"
-                        FontSize="18"/>
-
-                <Entry x:Name="ApiKeyEntry" Placeholder="Ange API-nyckel" />
-                <Button Text="Spara API-nyckel" Clicked="OnSaveApiKeyClicked" />
-            </StackLayout>
-        </ScrollView>
-    </Grid>
-</ContentPage>-->
-
