@@ -4,6 +4,67 @@
              x:Class="SagoApp.MainPage"
              BackgroundColor="Transparent">
     <Grid>
+        <Image Source="uggla.png"
+               Aspect="AspectFill"
+               Opacity="0.7" />
+
+        <ScrollView>
+            <StackLayout Padding="30" Spacing="15">
+                <Label Text="Vad ska sagan handla om?" 
+                       FontAttributes="Bold"
+                       TextColor="Orange"
+                       FontFamily="Comic Sans MS"
+                       FontSize="18"/>
+                <Editor x:Name="PromptEditor" 
+                        Placeholder="Skriv här..." 
+                        HeightRequest="100"
+                        BackgroundColor="#55303030"
+                        TextColor="White"
+                        FontFamily="Comic Sans Ms"
+                        FontSize="15"/>
+                <Label Text="Ange barnet eller barnens namn:" 
+                       FontAttributes="Bold"
+                       TextColor="Orange"
+                       FontFamily="Comic Sans Ms"
+                       FontSize="18"/>
+                <Entry x:Name="NamesEntry" 
+                       Placeholder="Ex. Selma, Emin"
+                       BackgroundColor="#55303030"
+                       TextColor="White"
+                       FontFamily="Comic Sans Ms"
+                       FontSize="15"/>
+                <Button Text="SKAPA SAGA" 
+                        Clicked="OnGenerateStoryClicked"
+                        BackgroundColor="DarkOrange"
+                        FontAttributes="Bold"
+                        TextColor="Purple" 
+                        FontFamily="Comic Sans Ms" />
+                <Label Text="Er magiska saga:" 
+                       FontAttributes="Bold"
+                       TextColor="Orange"
+                       FontFamily="Comic Sans Ms"
+                       FontSize="18"/>
+                <Editor x:Name="StoryEditor" 
+                        IsReadOnly="True" 
+                        HeightRequest="380"
+                        BackgroundColor="#80303030" 
+                        TextColor="White"
+                        FontFamily="Comic Sans Ms"
+                        FontSize="18"/>
+              
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
+
+
+
+<!--<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SagoApp.MainPage"
+             BackgroundColor="Transparent">
+    <Grid>
 
         <Image Source="uggla.png"
            Aspect="AspectFill"
@@ -52,8 +113,11 @@
                         TextColor="White"
                         FontFamily="Comic Sans Ms"
                         FontSize="18"/>
+
+                <Entry x:Name="ApiKeyEntry" Placeholder="Ange API-nyckel" />
+                <Button Text="Spara API-nyckel" Clicked="OnSaveApiKeyClicked" />
             </StackLayout>
         </ScrollView>
     </Grid>
-</ContentPage>
+</ContentPage>-->
 
