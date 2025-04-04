@@ -1,13 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SagoApp.MainPage"
-             BackgroundColor="Transparent">
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:admob="clr-namespace:Plugin.AdMob;assembly=Plugin.AdMob"
+    x:Class="SagoApp.MainPage"
+    BackgroundColor="Transparent">
     <Grid>
+        <!-- Definiera två rader: innehåll (stjärnstorlek) och banner (auto) -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Bakgrundsbilden täcker båda raderna -->
         <Image Source="uggla.png"
                Aspect="AspectFill"
-               Opacity="0.7" />
-        <ScrollView>
+               Opacity="0.7"
+               Grid.RowSpan="2" />
+
+        <!-- Innehåll placerat i row 0 -->
+        <ScrollView Grid.Row="0">
             <StackLayout Padding="30" Spacing="15">
                 <!-- Fördefinierade prompt-knappar -->
                 <Label Text="Välj en färdig sagomall:" 
@@ -32,7 +44,6 @@
                             Clicked="OnPresetPromptClicked"
                             CommandParameter="Skriv en magisk saga om trollkarlar, drakar och förtrollade skogar." />
                 </StackLayout>
-
                 <StackLayout Orientation="Horizontal" Spacing="10">
                     <Button Text="Historisk saga" 
                             FontAttributes="Bold,Italic"
@@ -45,7 +56,6 @@
                             Clicked="OnPresetPromptClicked"
                             CommandParameter="Skriv en spännande rymdäventyrshistoria om intergalaktiska upptäckter och möten med främmande livsformer." />
                 </StackLayout>
-
                 <Label Text="Vad ska sagan handla om?" 
                        FontAttributes="Bold"
                        TextColor="Orange"
@@ -87,8 +97,17 @@
                         TextColor="White"
                         FontFamily="Comic Sans Ms"
                         FontSize="18"/>
-              
             </StackLayout>
         </ScrollView>
+
+        <!-- Bannerannonsen placerad i row 1 med fast höjd -->
+        <admob:BannerAd Grid.Row="1" AdSize="SmartBanner">
+            <admob:BannerAd.AdUnitId>
+                <OnPlatform x:TypeArguments="x:String">
+                    <On Platform="iOS" Value="min-ios-adid" />
+                    <On Platform="Android" Value="min-android-adid" />
+                </OnPlatform>
+            </admob:BannerAd.AdUnitId>
+        </admob:BannerAd>
     </Grid>
 </ContentPage>
