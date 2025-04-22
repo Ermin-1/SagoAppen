@@ -5,35 +5,49 @@
     xmlns:admob="clr-namespace:Plugin.AdMob;assembly=Plugin.AdMob"
     x:Class="SagoApp.MainPage"
     BackgroundColor="Transparent">
+
     <Grid>
-        <!-- Definiera två rader: innehåll (stjärnstorlek) och banner (auto) -->
+        <!-- Korrekt antal rader -->
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto"/>
+            <!-- Top banner -->
+            <RowDefinition Height="*"/>
+            <!-- Innehåll -->
+            <RowDefinition Height="Auto"/>
+            <!-- Bottom banner -->
         </Grid.RowDefinitions>
 
-        <!-- Bakgrundsbilden täcker båda raderna -->
+        <!-- Bakgrundsbild täcker hela grid -->
         <Image Source="uggla.png"
                Aspect="AspectFill"
                Opacity="0.7"
-               Grid.RowSpan="2" />
+               Grid.RowSpan="3" />
 
-        <!-- Innehåll placerat i row 0 -->
-        <ScrollView Grid.Row="0">
+        <!-- TOP-BANNER -->
+        <admob:BannerAd Grid.Row="0" AdSize="SmartBanner">
+            <admob:BannerAd.AdUnitId>
+                <OnPlatform x:TypeArguments="x:String">
+                    <On Platform="iOS" Value="ditt-ios-banner-id" />
+                    <On Platform="Android" Value="ditt-android-banner-id" />
+                </OnPlatform>
+            </admob:BannerAd.AdUnitId>
+        </admob:BannerAd>
+
+        <!-- INNEHÅLL -->
+        <ScrollView Grid.Row="1">
             <StackLayout Padding="30" Spacing="15">
-                <!-- Fördefinierade prompt-knappar -->
                 <Label Text="Välj en färdig sagomall:" 
                        FontAttributes="Bold"
                        TextColor="Orange"
                        FontFamily="Comic Sans MS"
                        FontSize="18"/>
                 <StackLayout Orientation="Horizontal" Spacing="10">
-                    <Button Text="Äventyr" 
+                    <Button Text="Äventyr"
                             FontAttributes="Bold,Italic"
                             FontFamily="Comic Sans MS"
                             Clicked="OnPresetPromptClicked"
                             CommandParameter="Skriv en spännande äventyrsresa där hjälten hittar dolda skatter." />
-                    <Button Text="Mysterium" 
+                    <Button Text="Mysterium"
                             FontAttributes="Bold,Italic"
                             FontFamily="Comic Sans MS"
                             Clicked="OnPresetPromptClicked"
@@ -45,63 +59,63 @@
                             CommandParameter="Skriv en magisk saga om trollkarlar, drakar och förtrollade skogar." />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal" Spacing="10">
-                    <Button Text="Historisk saga" 
+                    <Button Text="Historisk saga"
                             FontAttributes="Bold,Italic"
                             FontFamily="Comic Sans MS"
                             Clicked="OnPresetPromptClicked"
                             CommandParameter="Skriv en fängslande historisk berättelse om forna tider och hjältedåd." />
-                    <Button Text="Rymdäventyr" 
+                    <Button Text="Rymdäventyr"
                             FontAttributes="Bold,Italic"
                             FontFamily="Comic Sans MS"
                             Clicked="OnPresetPromptClicked"
                             CommandParameter="Skriv en spännande rymdäventyrshistoria om intergalaktiska upptäckter och möten med främmande livsformer." />
                 </StackLayout>
-                <Label Text="Vad ska sagan handla om?" 
+                <Label Text="Vad ska sagan handla om?"
                        FontAttributes="Bold"
                        TextColor="Orange"
                        FontFamily="Comic Sans MS"
                        FontSize="18"/>
-                <Editor x:Name="PromptEditor" 
-                        Placeholder="Skriv här..." 
+                <Editor x:Name="PromptEditor"
+                        Placeholder="Skriv här..."
                         HeightRequest="100"
                         BackgroundColor="#55303030"
                         TextColor="White"
-                        FontFamily="Comic Sans Ms"
+                        FontFamily="Comic Sans MS"
                         FontSize="15"/>
-                <Label Text="Ange barnet eller barnens namn:" 
+                <Label Text="Ange barnet eller barnens namn:"
                        FontAttributes="Bold"
                        TextColor="Orange"
-                       FontFamily="Comic Sans Ms"
+                       FontFamily="Comic Sans MS"
                        FontSize="18"/>
-                <Entry x:Name="NamesEntry" 
+                <Entry x:Name="NamesEntry"
                        Placeholder="Ex. Selma, Emin"
                        BackgroundColor="#55303030"
                        TextColor="White"
-                       FontFamily="Comic Sans Ms"
+                       FontFamily="Comic Sans MS"
                        FontSize="15"/>
-                <Button Text="SKAPA SAGA" 
+                <Button Text="SKAPA SAGA"
                         Clicked="OnGenerateStoryClicked"
                         BackgroundColor="DarkOrange"
                         FontAttributes="Bold"
-                        TextColor="Purple" 
-                        FontFamily="Comic Sans Ms" />
-                <Label Text="Er magiska saga:" 
+                        TextColor="Purple"
+                        FontFamily="Comic Sans MS"/>
+                <Label Text="Er magiska saga:"
                        FontAttributes="Bold"
                        TextColor="Orange"
-                       FontFamily="Comic Sans Ms"
+                       FontFamily="Comic Sans MS"
                        FontSize="18"/>
-                <Editor x:Name="StoryEditor" 
-                        IsReadOnly="True" 
+                <Editor x:Name="StoryEditor"
+                        IsReadOnly="True"
                         HeightRequest="380"
-                        BackgroundColor="#80303030" 
+                        BackgroundColor="#80303030"
                         TextColor="White"
-                        FontFamily="Comic Sans Ms"
+                        FontFamily="Comic Sans MS"
                         FontSize="18"/>
             </StackLayout>
         </ScrollView>
 
-        <!-- Bannerannonsen placerad i row 1 med fast höjd -->
-        <admob:BannerAd Grid.Row="1" AdSize="SmartBanner">
+        <!-- BOTTOM-BANNER i rätt rad -->
+        <admob:BannerAd Grid.Row="2" AdSize="SmartBanner">
             <admob:BannerAd.AdUnitId>
                 <OnPlatform x:TypeArguments="x:String">
                     <On Platform="iOS" Value="min-ios-adid" />
