@@ -104,6 +104,13 @@
                        TextColor="Orange"
                        FontFamily="Comic Sans MS"
                        FontSize="18"/>
+                <!--<Button Text="LÄS UPP SAGA"
+                        Clicked="OnReadStoryClicked"
+                        BackgroundColor="#FFA500"
+                        TextColor="Purple"
+                        FontAttributes="Bold"
+                        FontFamily="Comic Sans MS"/>-->
+
                 <Editor x:Name="StoryEditor"
                         IsReadOnly="True"
                         HeightRequest="380"

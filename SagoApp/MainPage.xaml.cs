@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Storage;
 using Microsoft.Maui.Devices; // För plattformsinformation
+using Microsoft.Maui.Media;
 
 namespace SagoApp
 {
@@ -30,6 +31,9 @@ namespace SagoApp
 
             // Anropa backend‑API:et för att generera sagan
             string generatedStory = await GenerateStoryFromBackendAsync(fullPrompt, names);
+
+            generatedStory = generatedStory.Replace("**", ""); // Ta bort eventuella asterisker
+            generatedStory = generatedStory.Replace("###", ""); // Ta bort eventuella asterisker
 
             // Visa den genererade sagan
             StoryEditor.Text = generatedStory;
@@ -76,8 +80,45 @@ namespace SagoApp
                 PromptEditor.Text = preset;
             }
         }
+        //private async void OnReadStoryClicked(object sender, EventArgs e)
+        //{
+        //    string story = StoryEditor.Text;
+
+        //    if (string.IsNullOrWhiteSpace(story))
+        //    {
+        //        await DisplayAlert("Ingen saga", "Det finns ingen saga att läsa upp.", "OK");
+        //        return;
+        //    }
+
+        //    // Hämta alla röster
+        //    var locales = await TextToSpeech.Default.GetLocalesAsync();
+
+        //    // Försök hitta en svensk röst
+        //    var swedishVoice = locales.FirstOrDefault(l =>
+        //        l.Language.StartsWith("sv", StringComparison.OrdinalIgnoreCase)
+        //    );
+
+        //    if (swedishVoice == null)
+        //    {
+        //        await DisplayAlert("Ingen svensk röst", "Hittar ingen svensk röst på din enhet. Försök installera en via systeminställningarna.", "OK");
+        //        return;
+        //    }
+
+        //    var options = new SpeechOptions
+        //    {
+        //        Locale = swedishVoice,
+        //        Pitch = 1.0f,
+        //        Volume = 1.0f
+        //    };
+
+        //    await TextToSpeech.Default.SpeakAsync(story, options);
+        //}
+
+
+
 
     }
+
 
     // Modell för inkommande request
     public class StoryRequest
